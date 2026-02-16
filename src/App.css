@@ -1,0 +1,58 @@
+/* ================================
+   GLOBAL RESET & WINDOW SCROLL
+================================ */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* ✅ ALWAYS window scroll */
+  font-family: var(--font-body);
+  background: var(--bg-gradient);
+}
+
+/* =================================
+   APP ROOT
+================================= */
+
+.navbar,
+.app-main {
+  position: relative;
+  z-index: 1;
+}
+
+.app-main {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* =================================
+   SECTIONS (DESKTOP + MOBILE)
+================================= */
+
+main>section {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* =================================
+   MOBILE SPACING FIX
+================================= */
+
+@media (max-width: 1024px) {
+  main>section {
+    min-height: auto;
+    padding-top: 80px;
+    /* space for mobile navbar */
+    padding-bottom: 50px;
+  }
+}

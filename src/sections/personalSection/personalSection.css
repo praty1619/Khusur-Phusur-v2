@@ -1,0 +1,194 @@
+/* src/sections/PersonalSection/PersonalSection.css */
+
+.personal-section {
+    padding: 120px var(--spacing-container);
+    position: relative;
+    /* We keep the yellow textured background from body */
+    overflow: hidden;
+}
+
+.personal-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    /* Center vertically */
+    gap: 4rem;
+    /* Space between image and text */
+}
+
+/* --- LEFT: The Photo Frame --- */
+.image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.photo-frame {
+    background: #fff;
+    padding: 15px 15px 40px 15px;
+    /* Extra bottom padding for "Polaroid" look */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    /* Deep shadow */
+    transform: rotate(-2deg);
+    /* Artistic Tilt */
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.photo-frame:hover {
+    transform: rotate(0deg) scale(1.02);
+    z-index: 2;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: sepia(10%) contrast(1.05);
+    /* Subtle vintage warmth */
+}
+
+.photo-caption {
+    font-family: var(--font-display);
+    /* Signature font */
+    font-size: 2rem;
+    color: var(--text-primary);
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    line-height: 40px;
+}
+
+/* --- RIGHT: The Text Content --- */
+.content-wrapper {
+    flex: 1.2;
+}
+
+.section-heading {
+    font-family: var(--font-body);
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 30px;
+    color: var(--text-primary);
+}
+
+.section-heading .serif-highlight {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 600;
+    color: var(--accent-rust);
+    /* Make the word "Facilitator" huge */
+    font-size: 3.5rem;
+    display: block;
+    line-height: 0.8;
+}
+
+/* Bio Text Styling */
+.lead-paragraph {
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: var(--text-primary);
+    border-left: 4px solid var(--accent-rust);
+    padding-left: 20px;
+}
+
+.bio-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.bio-item h4 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: var(--accent-rust);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.bio-item p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.highlight {
+    font-weight: 600;
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.4);
+    /* subtle marker effect */
+    padding: 0 4px;
+}
+
+.closing-text {
+    font-style: italic;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 900px) {
+    .personal-container {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .image-wrapper {
+        order: 1;
+        /* Image first? or Text first? Usually Image helps intro */
+    }
+
+    .photo-frame {
+        max-width: 300px;
+        /* Smaller frame on mobile */
+        transform: rotate(-1deg);
+    }
+
+    .content-wrapper {
+        order: 2;
+        text-align: left;
+        /* Keep left align for readability */
+    }
+
+    .section-heading {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .section-heading .serif-highlight {
+        font-size: 3rem;
+    }
+}
+
+/* Add/Update this Media Query at the bottom */
+@media (max-width: 900px) {
+    .personal-section {
+        /* Remove the hidden overflow so we can scroll */
+        overflow: visible;
+        padding-top: 80px;
+        /* Add space at top */
+    }
+
+    .personal-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    /* Fix the image wrapper */
+    .image-wrapper {
+        margin-bottom: 20px;
+    }
+
+    /* Stop the text from being centered weirdly */
+    .content-wrapper {
+        text-align: left;
+    }
+}

@@ -1,0 +1,241 @@
+.contact-section {
+    position: relative;
+    padding: 80px var(--spacing-container) 20px var(--spacing-container);
+    background: transparent;
+    overflow: hidden;
+    /* Prevents 3D tilt from causing scrollbars */
+}
+
+/* --- THE 3D WRAPPER --- */
+.ticket-3d-wrapper {
+    perspective: 1200px;
+    /* Required for 3D effect to work */
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto 60px auto;
+}
+
+/* --- THE PHYSICAL TICKET --- */
+.ticket-card {
+    display: flex;
+    background: #FFFAF0;
+    /* Warm, vintage paper off-white */
+    border-radius: 12px;
+    box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.15),
+        /* Deep floating shadow */
+        0 0 0 1px rgba(0, 0, 0, 0.05);
+    /* Crisp edge */
+    color: var(--text-primary);
+    will-change: transform;
+}
+
+/* LEFT SIDE: MAIN BODY */
+.ticket-main {
+    flex: 2.5;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ticket-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 700;
+    color: var(--accent-rust);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.ticket-main h2 {
+    font-family: var(--font-body);
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 300;
+    color: #2C241B;
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+.ticket-main .serif-highlight {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent-rust);
+}
+
+.contact-desc {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Social Links */
+.ticket-socials {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.ticket-socials a {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: #2C241B;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.ticket-socials i {
+    color: var(--accent-rust);
+    font-size: 1.2rem;
+}
+
+.ticket-socials a:hover {
+    color: var(--accent-rust);
+    transform: translateY(-2px);
+}
+
+/* --- THE PERFORATION LINE --- */
+.ticket-perforation {
+    width: 3px;
+    background-image: linear-gradient(to bottom, transparent 50%, rgba(44, 36, 27, 0.15) 50%);
+    background-size: 3px 20px;
+    position: relative;
+    /* Optional: creates a slight crease effect */
+    box-shadow: -1px 0 2px rgba(0, 0, 0, 0.02);
+}
+
+/* RIGHT SIDE: THE STUB */
+.ticket-stub {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: rgba(0, 0, 0, 0.02);
+    /* Slightly darker to distinguish it */
+}
+
+.stub-content {
+    display: flex;
+    gap: 20px;
+    height: 100%;
+}
+
+/* Vertical Text */
+.admit-one {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    /* Reads bottom to top */
+    font-family: var(--font-body);
+    letter-spacing: 8px;
+    font-size: 1.2rem;
+    color: var(--accent-rust);
+    font-weight: 700;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.stub-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.stub-info p {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #2C241B;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+}
+
+.stub-info i {
+    color: var(--accent-rust);
+    opacity: 0.7;
+}
+
+/* CSS Barcode Generator */
+.barcode {
+    height: 40px;
+    width: 100%;
+    margin-top: 30px;
+    background-image: repeating-linear-gradient(to right,
+            #2C241B,
+            #2C241B 2px,
+            transparent 2px,
+            transparent 6px,
+            #2C241B 6px,
+            #2C241B 8px,
+            transparent 8px,
+            transparent 10px,
+            #2C241B 10px,
+            #2C241B 11px,
+            transparent 11px,
+            transparent 15px);
+    opacity: 0.6;
+}
+
+/* --- Bottom Copyright Bar --- */
+.contact-bottom {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    padding-top: 20px;
+    text-align: center;
+}
+
+.contact-bottom p {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 900px) {
+    .ticket-card {
+        flex-direction: column;
+    }
+
+    .ticket-main {
+        padding: 40px 30px;
+    }
+
+    /* Change perforation to horizontal */
+    .ticket-perforation {
+        width: 100%;
+        height: 3px;
+        background-image: linear-gradient(to right, transparent 50%, rgba(44, 36, 27, 0.15) 50%);
+        background-size: 20px 3px;
+    }
+
+    .ticket-stub {
+        padding: 30px;
+    }
+
+    .stub-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Reset vertical text to standard horizontal */
+    .admit-one {
+        writing-mode: horizontal-tb;
+        transform: none;
+        letter-spacing: 5px;
+    }
+
+    .stub-info {
+        align-items: center;
+    }
+}

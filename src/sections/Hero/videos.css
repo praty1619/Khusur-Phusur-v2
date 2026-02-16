@@ -1,0 +1,84 @@
+/* src/sections/Hero/videos.css */
+
+.videos-page {
+    min-height: 100vh;
+    background-color: #0a0a0a;
+    /* Deep theater black */
+    color: #ffffff;
+    padding: 60px var(--spacing-container) 100px var(--spacing-container);
+}
+
+/* Navigation */
+.videos-nav {
+    margin-bottom: 60px;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: var(--accent-rust);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.3s, transform 0.3s;
+    display: inline-block;
+}
+
+.back-btn:hover {
+    opacity: 0.8;
+    transform: translateX(-5px);
+    /* Slides left slightly */
+}
+
+/* Header */
+.videos-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.videos-header .subtitle {
+    color: var(--accent-rust);
+    margin-bottom: 15px;
+}
+
+.videos-header .hindi-title {
+    color: #ffffff;
+    /* Override the dark text from global css */
+}
+
+/* Responsive Grid */
+.video-grid {
+    display: grid;
+    /* Automatically creates columns that fit the screen */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Video Card Styling */
+.video-card {
+    background: #151515;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.custom-video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    /* Keeps all videos perfectly uniform */
+    display: block;
+    object-fit: cover;
+    outline: none;
+    background: #000;
+}

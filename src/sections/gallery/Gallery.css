@@ -1,0 +1,189 @@
+.gallery-section {
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header Adjustments */
+.gallery-header {
+    width: 100%;
+    padding: 0 var(--spacing-container);
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.subtitle {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent-rust);
+    display: block;
+    margin-bottom: 10px;
+}
+
+.section-title {
+    font-family: var(--font-body);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    color: #2C241B;
+    font-weight: 300;
+    line-height: 1.1;
+}
+
+.serif-highlight {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--accent-rust);
+}
+
+/* --- STACK WRAPPER (Holds Stack + Cues) --- */
+.stack-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    /* Ensures wrapper can span the screen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    margin: 0 auto;
+}
+
+/* --- VISUAL SWIPE CUES --- */
+.swipe-cue {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent-rust);
+    opacity: 0.6;
+    z-index: 15;
+    /* High z-index so they are clickable */
+    cursor: pointer;
+    /* Turns mouse into a hand */
+    pointer-events: auto;
+    /* Ensures they can be clicked */
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s ease;
+
+    width: 64px;
+    height: 64px;
+}
+
+.swipe-cue:hover {
+    opacity: 1;
+}
+
+/* PUSHED FAR TO THE EDGES */
+.cue-left {
+    left: 5%;
+}
+
+.cue-right {
+    right: 5%;
+}
+
+/* --- THE STACK CONTAINER --- */
+.stack-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 450px;
+    display: grid;
+    place-items: center;
+    perspective: 1000px;
+}
+
+/* --- THE CARD & POLAROID FRAME --- */
+.stacked-card {
+    position: absolute;
+    will-change: transform;
+    /* Bulletproof centering that won't fight Framer Motion */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* The top card needs a grab cursor */
+.stacked-card:nth-child(1) {
+    cursor: grab;
+}
+
+.stacked-card:nth-child(1):active {
+    cursor: grabbing;
+}
+
+.polaroid-frame {
+    background: #ffffff;
+    padding: 12px 12px 35px 12px;
+    border-radius: 3px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12), 0 2px 5px rgba(0, 0, 0, 0.05);
+    width: 75vw;
+    max-width: 320px;
+    aspect-ratio: 4 / 5;
+}
+
+.polaroid-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+    filter: sepia(10%) contrast(1.05);
+    pointer-events: none;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .gallery-section {
+        padding: 60px 0;
+    }
+
+    .stack-container {
+        height: 380px;
+    }
+
+    /* On mobile, bring arrows slightly closer so they don't fall off screen */
+    .cue-left {
+        left: 10px;
+    }
+
+    .cue-right {
+        right: 10px;
+    }
+
+    .polaroid-frame {
+        width: 75vw;
+        max-width: 280px;
+        padding: 10px 10px 30px 10px;
+    }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+
+    /* NEW: Scale the arrows back down for mobile screens */
+    .swipe-cue {
+        width: 32px;
+        height: 32px;
+    }
+
+    /* On mobile, bring arrows slightly closer so they don't fall off screen */
+    .cue-left {
+        left: 10px;
+    }
+
+    .cue-right {
+        right: 10px;
+    }
+}

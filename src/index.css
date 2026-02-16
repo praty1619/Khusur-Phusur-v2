@@ -1,0 +1,72 @@
+/* src/styles/main.css */
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+
+:root {
+  /* ✅ RESTORED: The Golden Yellow, but richer */
+  --bg-color-main: #ffcc83;
+  --bg-gradient: radial-gradient(circle at center, #ffcc83 0%, #ffc06e 100%);
+
+  /* Text Colors */
+  --text-primary: #1a1a1a;
+  /* Soft Black */
+  --text-secondary: #4a4a4a;
+  /* Dark Grey for readability on yellow */
+  --accent-rust: #a84800;
+  /* Darker Rust to pop against yellow */
+
+  /* Fonts */
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Montserrat', sans-serif;
+
+  --spacing-container: 5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* Use the gradient instead of flat color */
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  /* Keeps background still while scrolling */
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  line-height: 1.6;
+  position: relative;
+    z-index: 0;
+}
+
+/* ✅ TEXTURE: This is what makes the yellow look "Impeccable" */
+/* It adds a paper-like grain so it doesn't look like a flat screen */
+/* body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: overlay;
+} */
+
+button {
+  font-family: var(--font-body);
+}
+
+.texture-layer {
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg ... %3E");
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+}

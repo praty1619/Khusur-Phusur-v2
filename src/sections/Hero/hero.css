@@ -1,0 +1,364 @@
+/* src/sections/Hero/hero.css */
+
+.hero-container {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--spacing-container);
+    overflow: hidden;
+    /* min-height: 100vh;
+    padding-top: 80px;
+        /* ✅ Add internal padding ONLY to the top container */
+    /* padding-bottom: 40px; */ 
+}
+
+/* Layout Grid */
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    /* Balanced split */
+    max-width: 1300px;
+    width: 100%;
+    align-items: center;
+    gap: 2rem;
+    z-index: 2;
+    padding-bottom: 50px;
+    /* Space for the navbar */
+}
+
+/* Typography Styling */
+.badge-wrapper {
+    margin-bottom: 1.5rem;
+}
+
+.hero-badge {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: var(--text-primary);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 8px 16px;
+    border-radius: 50px;
+    /* Subtle glass effect to pop off the yellow */
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.hero-headline {
+    font-family: var(--font-body);
+    /* Scale font size smoothly between mobile and desktop */
+    font-size: clamp(2.8rem, 5vw, 5.5rem);
+    line-height: 1.1;
+    font-weight: 300;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+}
+
+/* Making "Rhythm" stand out */
+.italic-accent {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+}
+
+.hero-subtext {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+/* Buttons */
+.hero-cta-group {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.btn-primary {
+    /* Keep existing styles */
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+
+    /* ✅ NEW: Setup for the shine */
+    position: relative;
+    overflow: hidden;
+    /* Important! Keeps the shine inside the button */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* The Shine Bar */
+.btn-primary::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    /* Start off-screen left */
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg,
+            transparent,
+            rgba(255, 255, 255, 0.3),
+            transparent);
+    transform: skewX(-20deg);
+    transition: 0.5s;
+}
+
+/* Trigger Shine on Hover */
+.btn-primary:hover::after {
+    left: 150%;
+    /* Move off-screen right */
+    transition: 0.7s ease-in-out;
+}
+
+.btn-text {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+    transition: opacity 0.2s;
+}
+
+.btn-text:hover {
+    opacity: 0.7;
+}
+
+/* =========================================
+   ✅ LOGO STYLING (Desktop & Mobile separation)
+   ========================================= */
+
+/* 1. Desktop Logo Styling */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-logo {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+}
+
+/* 2. Mobile Logo Container - HIDDEN ON DESKTOP BY DEFAULT */
+.mobile-logo-container {
+    display: none;
+}
+
+/* Shared animation */
+.breathing-logo {
+    animation: breathe 6s ease-in-out infinite;
+}
+
+@keyframes breathe {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.italic-accent {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+
+    /* ✅ NEW: Subtle text color shift */
+    color: #a84800;
+    /* Dark Rust */
+
+    /* Optional: Very subtle text shadow for depth */
+    text-shadow: 2px 2px 0px rgba(255, 204, 131, 0.5);
+}
+
+/* =========================================
+   ✅ MOBILE & TABLET FIXES
+   ========================================= */
+
+@media (max-width: 1024px) {
+    .hero-container {
+        min-height: auto;
+        padding-top: 80px;
+        padding-bottom: 120px;
+        align-items: flex-start;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+        /* Stack vertically */
+        text-align: center;
+        gap: 2rem;
+    }
+
+    /* Center align the text block */
+    .hero-text-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* ✅ HIDE THE DESKTOP VISUAL ON MOBILE */
+    .desktop-visual {
+        display: none !important;
+    }
+
+    /* ✅ SHOW THE MOBILE LOGO ON MOBILE */
+    .mobile-logo-container {
+        display: block;
+        /* Make it visible */
+        margin: 2rem 0;
+        /* Add space above and below headline */
+    }
+
+    .mobile-logo {
+        width: 250px;
+        /* Perfect size for mobile */
+        height: auto;
+        filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.1));
+    }
+
+    .hero-headline {
+        font-size: 2.8rem;
+    }
+
+    .hero-subtext {
+        font-size: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 10px;
+    }
+
+    .hero-cta-group {
+        justify-content: center;
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 100%;
+    }
+
+    .btn-primary {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+    .hero-headline {
+        font-size: 2.4rem;
+    }
+
+    .hero-badge {
+        font-size: 0.75rem;
+        padding: 6px 12px;
+    }
+}
+
+/* Find your .scroll-indicator block and add this: */
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 45%;
+    /* This ensures it centers exactly on the line */
+    transform: translateX(-50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 5;
+    cursor: pointer;
+}
+
+/* MOBILE FIX for Hero */
+@media (max-width: 1024px) {
+    .hero-container {
+        /* Ensure content doesn't get hidden behind top nav */
+        padding-top: 100px;
+    }
+
+    /* Hide scroll indicator on mobile if it overlaps content */
+    .scroll-indicator {
+        bottom: 10px;
+        transform: translateX(-50%) scale(0.8);
+        /* Make it smaller */
+    }
+}
+.scroll-indicator:hover {
+    opacity: 1;
+    /* Brightens up when you hover */
+}
+
+.scroll-indicator p {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* The Mouse Icon */
+.mouse-icon {
+    width: 26px;
+    height: 40px;
+    border: 2px solid var(--text-primary);
+    border-radius: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+/* The Little Wheel Inside */
+.wheel {
+    width: 4px;
+    height: 6px;
+    background-color: var(--text-primary);
+    border-radius: 2px;
+    margin-top: 6px;
+    animation: scrollWheel 2s ease-in-out infinite;
+}
+
+@keyframes scrollWheel {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(12px);
+        opacity: 0;
+    }
+}
+
+/* Hide on very small screens to save space */
+@media (max-width: 480px) {
+    .scroll-indicator {
+        display: none;
+    }
+}
+
+/* @media (max-width: 768px) {
+    .hero-container {
+        padding-top: 100px;
+    }
+} */

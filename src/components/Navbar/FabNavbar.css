@@ -1,0 +1,200 @@
+/* src/components/Navbar/FabNavbar.css */
+
+/* =========================================
+   1. BASE NAVBAR (Desktop - Centered)
+   ========================================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) !important;
+    /* Center on Desktop */
+
+    width: 100%;
+    max-width: 800px;
+    padding: 25px 0;
+
+    z-index: 9999;
+
+    background: transparent;
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* =========================================
+   2. SCROLLED STATE (Desktop - Glass)
+   ========================================= */
+.navbar.scrolled {
+    top: 20px;
+    width: auto;
+    min-width: 500px;
+    padding: 10px 40px;
+
+    background: rgba(255, 248, 235, 0.4);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(168, 72, 0, 0.15);
+    border-radius: 50px;
+    box-shadow: 0 10px 40px rgba(168, 72, 0, 0.05);
+}
+
+/* =========================================
+   3. DESKTOP LINKS
+   ========================================= */
+.desktop-menu {
+    display: flex;
+    gap: 35px;
+    align-items: center;
+}
+
+.nav-link {
+    position: relative;
+    background: none;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #2c1a0f;
+    cursor: pointer;
+    padding: 8px 0;
+    transition: opacity 0.3s;
+}
+
+.active-dot {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 4px;
+    height: 4px;
+    background-color: #a84800;
+    border-radius: 50%;
+}
+
+/* =========================================
+   4. MOBILE STYLES (Fixed UX)
+   ========================================= */
+.mobile-toggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .desktop-menu {
+        display: none;
+    }
+
+    .mobile-toggle {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    /* ✅ UX FIX: Move to Top Right & Remove "Dead Zone" */
+    .navbar {
+        width: 45px !important;
+        /* Slightly smaller to be less intrusive */
+        height: 45px !important;
+        min-width: unset !important;
+        padding: 0 !important;
+
+        top: 20px !important;
+
+        /* MOVE TO RIGHT */
+        left: auto !important;
+        right: 20px !important;
+        transform: none !important;
+        /* Stop centering */
+
+        border-radius: 50% !important;
+
+        background: rgba(255, 248, 235, 0.6);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(168, 72, 0, 0.2);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .navbar.scrolled {
+        top: 20px;
+        background: rgba(255, 248, 235, 0.6);
+    }
+
+    /* Hamburger Alignment */
+    .hamburger {
+        width: 18px;
+        height: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+    }
+
+    .hamburger span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: #2c1a0f;
+        border-radius: 2px;
+        transition: 0.3s;
+        transform-origin: center;
+    }
+
+    /* Perfect X Transformation */
+    .hamburger.open span:nth-child(1) {
+        transform: translateY(5px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+        transform: translateY(-5px) rotate(-45deg);
+    }
+}
+
+/* =========================================
+   5. MOBILE MENU OVERLAY
+   ========================================= */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--bg-color-main);
+    z-index: 9998;
+    /* Under the button */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mobile-links {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+}
+
+.mobile-link {
+    background: none;
+    border: none;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: transform 0.2s;
+}

@@ -1,0 +1,221 @@
+/* src/sections/Details/DetailsSection.css */
+
+.details-section {
+    position: relative;
+    width: 100%;
+    /* ✅ COMPACTED: Reduced from 100px to 60px */
+    padding: 60px var(--spacing-container);
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.details-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header Styling - Compacted */
+.details-header {
+    text-align: center;
+    margin-bottom: 40px;
+    /* Reduced from 60px */
+}
+
+.subtitle {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    /* Slightly smaller */
+    font-weight: 600;
+    color: var(--accent-rust);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.hindi-title {
+    font-family: var(--font-body);
+    /* ✅ COMPACTED: Smaller max font size so it fits better */
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    color: var(--text-primary);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.hindi-title .serif-highlight {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+}
+
+/* Grid Layout */
+.cards-grid {
+    display: grid;
+    /* Keeps cards from getting too wide */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    /* Reduced gap from 2rem */
+    width: 100%;
+}
+
+/* --- THE GLASS CARD --- */
+.glass-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    /* Slightly tighter radius */
+
+    /* ✅ COMPACTED: Reduced internal padding */
+    padding: 30px 25px;
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    /* Subtle lift */
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.featured-card {
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(168, 72, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* Badge - Compacted */
+.popular-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--accent-rust);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    z-index: 10;
+}
+
+/* Content Styling */
+.card-header {
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 15px;
+}
+
+.glass-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    /* Smaller title */
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    line-height: 1;
+}
+
+.tagline {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-rust);
+    font-weight: 600;
+}
+
+.card-desc {
+    font-size: 0.95rem;
+    /* Smaller body text */
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+/* Specs List - Compacted */
+.card-specs {
+    margin-bottom: 20px;
+}
+
+.spec-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    /* Tighter list */
+    font-size: 0.85rem;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+    padding-bottom: 6px;
+}
+
+.spec-row:last-child {
+    border-bottom: none;
+}
+
+.spec-label {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.spec-value {
+    color: var(--text-secondary);
+    text-align: right;
+    max-width: 60%;
+}
+
+/* Footer (Fee) */
+.card-footer {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 12px 15px;
+    /* Tighter footer */
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fee-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.fee-amount {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .details-section {
+        padding: 40px 15px;
+        /* Even less padding on mobile */
+    }
+
+    .hindi-title {
+        font-size: 2rem;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .glass-card {
+        padding: 25px 20px;
+    }
+
+    /* Hide the "Most Recommended" badge on mobile to save space */
+    .popular-badge {
+        display: none !important;
+    }
+}
